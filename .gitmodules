@@ -65,7 +65,7 @@
 	url = https://gitee.com/amovlab/p_libcanard.git
 [submodule "src/drivers/uavcan_v1/legacy_data_types"]
 	path = src/drivers/uavcan_v1/legacy_data_types
-	url = https://gitee.com/amovlab/p_public_regulated_data_types.git
+	url = https://gitee.com/amovlab/p2_public_regulated_data_types.git
 	branch = legacy
 [submodule "src/lib/crypto/monocypher"]
 	path = src/lib/crypto/monocypher
