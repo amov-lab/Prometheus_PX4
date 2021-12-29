@@ -4,7 +4,7 @@
 	branch = master
 [submodule "src/drivers/uavcan/libuavcan"]
 	path = src/drivers/uavcan/libuavcan
-	url = https://gitee.com/amovlab/p_libcanard.git
+	url = https://gitee.com/amovlab/p_libuavcan.git
 	branch = px4
 [submodule "Tools/jMAVSim"]
 	path = Tools/jMAVSim
