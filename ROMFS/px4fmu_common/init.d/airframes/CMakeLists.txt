@@ -76,6 +76,7 @@ px4_add_romfs_files(
 	4031_3dr_quad
 	4040_reaper
 	4041_beta75x
+	4045_amovlab_p450
 	4050_generic_250
 	4051_s250aq
 	4052_holybro_qav250

@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# AMOVLAB P450 specific board MAVLink startup script.
+#------------------------------------------------------------------------------
+
+# Start MAVLink on the USB port
+mavlink start -d /dev/ttyACM0
