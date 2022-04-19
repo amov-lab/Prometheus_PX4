@@ -80,8 +80,13 @@ if [ "$PX4_ESTIMATOR" = "q" ]; then
 	param set SYS_MC_EST_GROUP 3
 elif [ "$PX4_ESTIMATOR" = "ekf2" ]; then
 	param set SYS_MC_EST_GROUP 2
-elif [ "$PX4_ESTIMATOR" = "lpe" ]; then
-	param set SYS_MC_EST_GROUP 1
+	param set EKF2_AID_MASK 1
+	param set EKF2_HGT_MODE 0
+elif [ "$PX4_ESTIMATOR" = "ekf2_vision" ]; then
+	param set SYS_MC_EST_GROUP 2
+	param set EKF2_AID_MASK 24
+	param set EKF2_EV_DELAY 5
+	param set EKF2_HGT_MODE 3
 elif [ "$PX4_ESTIMATOR" = "inav" ]; then
 	param set SYS_MC_EST_GROUP 0
 fi
