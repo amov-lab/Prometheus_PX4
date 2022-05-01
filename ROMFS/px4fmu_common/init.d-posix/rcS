@@ -8,6 +8,7 @@
 #search path for sourcing px4-rc.*
 PATH="$PATH:${R}etc/init.d-posix"
 
+
 #
 # Main SITL startup script
 #
@@ -63,12 +64,12 @@ if [ -f $PARAM_FILE ]
 then
 	if param load
 	then
-		echo "[param] Loaded: $PARAM_FILE"
+		echo "[rcS] Loaded: $PARAM_FILE"
 	else
-		echo "[param] FAILED loading $PARAM_FILE"
+		echo "[rcS] FAILED loading $PARAM_FILE"
 	fi
 else
-	echo "[param] parameter file not found, creating $PARAM_FILE"
+	echo "[rcS] parameter file not found, creating $PARAM_FILE"
 fi
 
 # exit early when the minimal shell is requested

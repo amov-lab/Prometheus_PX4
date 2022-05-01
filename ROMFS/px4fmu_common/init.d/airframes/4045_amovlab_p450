@@ -14,6 +14,8 @@ sh /etc/init.d/rc.mc_defaults
 
 if [ $AUTOCNF = yes ]
 then
+	# P450 真机参数
+
 	# tuning
 	param set MC_PITCHRATE_P    0.11
 	param set MC_ROLLRATE_P     0.11

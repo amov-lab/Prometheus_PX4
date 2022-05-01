@@ -7,11 +7,16 @@
 
 . ${R}etc/init.d/rc.mc_defaults
 
+# P450 仿真参数
+# 解锁后,不起飞,自动上锁时间
+param set-default COM_DISARM_PRFLT 100.0
+
 param set-default MC_PITCHRATE_P 0.1
 param set-default MC_ROLLRATE_P 0.1
 param set-default MC_ROLLRATE_D 0.0017
 param set-default MC_ROLLRATE_P 0.076
 param set-default MC_ROLLRATE_I 0.187
 param set-default MC_ROLL_P 6.86
+
 
 set MIXER quad_x
