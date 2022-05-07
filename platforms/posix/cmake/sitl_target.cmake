@@ -134,6 +134,7 @@ set(models
 	uuv_bluerov2_heavy
 	uuv_hippocampus
 	p450
+	p230
 )
 
 set(worlds

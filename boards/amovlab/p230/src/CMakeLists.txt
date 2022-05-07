@@ -1,6 +1,6 @@
 ############################################################################
 #
-#   Copyright (c) 2020 PX4 Development Team. All rights reserved.
+#   Copyright (c) 2016 PX4 Development Team. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
@@ -31,52 +31,26 @@
 #
 ############################################################################
 
-px4_add_romfs_files(
-	10016_iris
-	10017_iris_ctrlalloc
-	10018_iris_foggy_lidar
-	10020_if750a
-	10030_px4vision
-	1010_iris_opt_flow
-	1010_iris_opt_flow.post
-	1011_iris_irlock
-	1012_iris_rplidar
-	1013_iris_vision
-	1013_iris_vision.post
-	1014_solo
-	1015_iris_obs_avoid
-	1015_iris_obs_avoid.post
-	1017_iris_opt_flow_mockup
-	1018_iris_vision_velocity
-	1019_iris_dual_gps
-	1020_uuv_generic
-	1021_uuv_hippocampus
-	1022_uuv_bluerov2_heavy
-	1030_plane
-	1031_plane_cam
-	1032_plane_catapult
-	1033_plane_lidar
-	1033_rascal
-	1034_rascal-electric
-	1035_techpod
-	1036_malolo
-	1040_standard_vtol
-	1041_tailsitter
-	1042_tiltrotor
-	1043_standard_vtol_drop
-	1043_standard_vtol_drop.post
-	1045_p450
-	1046_p230
-	1060_rover
-	1061_r1_rover
-	1062_tf-r1
-	1070_boat
-	3010_quadrotor_x
-	3011_hexarotor_x
-	17001_tf-g1
-	2507_cloudship
-	6011_typhoon_h480
-	6011_typhoon_h480.post
-	6012_typhoon_ctrlalloc
-	6012_typhoon_ctrlalloc.post
+add_library(drivers_board
+	can.c
+	i2c.cpp
+	init.c
+	led.c
+	manifest.c
+	sdio.c
+	spi.cpp
+	timer_config.cpp
+	usb.c
+	toc.c
+)
+add_dependencies(drivers_board arch_board_hw_info)
+
+target_link_libraries(drivers_board
+	PRIVATE
+		arch_board_hw_info
+		arch_spi
+		drivers__led # drv_led_start
+		nuttx_arch # sdio
+		nuttx_drivers # sdio
+		px4_layer
 )
