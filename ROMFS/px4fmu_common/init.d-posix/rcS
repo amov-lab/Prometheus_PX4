@@ -49,10 +49,10 @@ else
 	# shellcheck disable=SC2012
 	REQUESTED_AUTOSTART=$(ls "${R}etc/init.d-posix/airframes" | sed -n 's/^\([0-9][0-9]*\)_'${PX4_SIM_MODEL}'$/\1/p')
 	if [ -z "$REQUESTED_AUTOSTART" ]; then
-		echo "Error: Unknown model $PX4_SIM_MODEL (not found by name on ${R}etc/init.d-posix/airframes)"
+		echo "[rcS] Error: Unknown model $PX4_SIM_MODEL (not found by name on ${R}etc/init.d-posix/airframes)"
 		exit 1
 	else
-		echo "Info: found model autostart file as SYS_AUTOSTART=$REQUESTED_AUTOSTART"
+		echo "[rcS] Info: found model autostart file as SYS_AUTOSTART=$REQUESTED_AUTOSTART"
 	fi
 fi
 
@@ -165,19 +165,19 @@ param set-default TRIG_INTERFACE 3
 # Adapt timeout parameters if simulation runs faster or slower than realtime.
 if [ -n "$PX4_SIM_SPEED_FACTOR" ]; then
 	COM_DL_LOSS_T_LONGER=$(echo "$PX4_SIM_SPEED_FACTOR * 10" | bc)
-	echo "COM_DL_LOSS_T set to $COM_DL_LOSS_T_LONGER"
+	echo "[rcS] COM_DL_LOSS_T set to $COM_DL_LOSS_T_LONGER"
 	param set COM_DL_LOSS_T $COM_DL_LOSS_T_LONGER
 
 	COM_RC_LOSS_T_LONGER=$(echo "$PX4_SIM_SPEED_FACTOR * 0.5" | bc)
-	echo "COM_RC_LOSS_T set to $COM_RC_LOSS_T_LONGER"
+	echo "[rcS] COM_RC_LOSS_T set to $COM_RC_LOSS_T_LONGER"
 	param set COM_RC_LOSS_T $COM_RC_LOSS_T_LONGER
 
 	COM_OF_LOSS_T_LONGER=$(echo "$PX4_SIM_SPEED_FACTOR * 0.5" | bc)
-	echo "COM_OF_LOSS_T set to $COM_OF_LOSS_T_LONGER"
+	echo "[rcS] COM_OF_LOSS_T set to $COM_OF_LOSS_T_LONGER"
 	param set COM_OF_LOSS_T $COM_OF_LOSS_T_LONGER
 
 	COM_OBC_LOSS_T_LONGER=$(echo "$PX4_SIM_SPEED_FACTOR * 5.0" | bc)
-	echo "COM_OBC_LOSS_T set to $COM_OBC_LOSS_T_LONGER"
+	echo "[rcS] COM_OBC_LOSS_T set to $COM_OBC_LOSS_T_LONGER"
 	param set COM_OBC_LOSS_T $COM_OBC_LOSS_T_LONGER
 fi
 
@@ -197,7 +197,7 @@ do
 	esac
 done
 if [ ! -e "$autostart_file" ]; then
-	echo "Error: no autostart file found ($autostart_file)"
+	echo "[rcS] Error: no autostart file found ($autostart_file)"
 	exit 1
 fi
 
