@@ -9,14 +9,242 @@
 
 # P230 仿真参数
 # 解锁后,不起飞,自动上锁时间
-param set-default COM_DISARM_PRFLT 100.0
+# param set-default COM_DISARM_PRFLT 100.0
 
-param set-default MC_PITCHRATE_P 0.1
-param set-default MC_ROLLRATE_P 0.1
-param set-default MC_ROLLRATE_D 0.0017
-param set-default MC_ROLLRATE_P 0.076
-param set-default MC_ROLLRATE_I 0.187
+# param set-default MC_PITCHRATE_P 0.1
+# param set-default MC_ROLLRATE_P 0.1
+# param set-default MC_ROLLRATE_D 0.0017
+# param set-default MC_ROLLRATE_P 0.076
+# param set-default MC_ROLLRATE_I 0.187
+# param set-default MC_ROLL_P 6.86
+
+####################### 传感器任务定义参数 #######################
+
+#数据链路丢失时间阈值
+param set-default COM_DL_LOSS_T 10
+#RC丢失时间阈值
+param set-default COM_RC_LOSS_T 0.5
+#设置RC丢失故障保护模式
+param set-default NAV_RCL_ACT 2
+#降落后触发自动上锁时间
+param set-default COM_DISARM_LAND 2
+#不起飞时自动上锁时间
+param set-default COM_DISARM_PRFLT -1
+#是否允许在无GPS的情况下进行解锁
+param set-default COM_ARM_WO_GPS 1
+#电池故障保护模式
+param set-default COM_LOW_BAT_ACT 3
+#触发机载计算机控制信号丢失操作时间阈值
+param set-default COM_OF_LOSS_T 0
+#设置机载计算机控制信号丢失故障保护模式
+param set-default COM_OBL_ACT 0
+#机载计算机连接丢失超时，发出连接丢失警告
+param set-default COM_OBC_LOSS_T 5
+#允许解锁的 EKF position innovation test radio 值
+param set-default COM_ARM_EKF_POS 0.5
+#允许解锁的 EKF velocity innovation test radio 值
+param set-default COM_ARM_EKF_VEL 0.5
+#允许解锁的 EKF height innovation test radio 值
+param set-default COM_ARM_EKF_HGT 1.0
+#允许解锁的 EKF yaw innovation test radio 值
+param set-default COM_ARM_EKF_YAW 0.5
+#IMU与加速度计差值最大值
+param set-default COM_ARM_IMU_ACC 0.7
+#IMU与陀螺仪差值最大值
+param set-default COM_ARM_IMU_GYR 0.25
+#磁场角度差值最大值
+param set-default COM_ARM_MAG_ANG 45
+#磁力强度预检检查使能
+param set-default COM_ARM_MAG_STR 1
+#指定忽略RC丢失且未触发故障保护动作的模式（额外的模式）
+param set-default COM_RCL_EXCEPT 2
+#触发kill之后多长时间后进行上锁
+param set-default COM_KILL_DISARM 5
+
+####################### 起飞 & 降落 #######################
+
+#降落速度
+param set-default MPC_LAND_SPEED 0.7
+#起飞速度
+param set-default MPC_TKO_SPEED 1.5
+
+####################### 位置控制参数 #######################
+
+#自动推力控制中的最小推力
+param set-default MPC_THR_MIN 0.12
+#自动推力控制中的最大推力
+param set-default MPC_THR_MAX 1.0
+#悬停推力
+param set-default MPC_THR_HOVER 0.5
+#悬停推力源选择器
+param set-default MPC_USE_HTE 1
+# #手动位置控制子模式
+param set-default MPC_POS_MODE 4
+#低通滤波器截止频率
+param set-default MPC_VELD_LP 5.0
+
+### 垂直位置控制参数
+#垂直位置误差的比例增益
+param set-default MPC_Z_P 1.0
+#垂直速度误差的比例增益
+param set-default MPC_Z_VEL_P_ACC 4.0
+#垂直速度误差的积分增益
+param set-default MPC_Z_VEL_I_ACC 2.0
+#垂直速度误差的微分增益
+param set-default MPC_Z_VEL_D_ACC 0.0
+
+### 水平位置控制参数
+#水平位置误差的比例增益
+param set-default MPC_XY_P 0.95
+#水平速度误差的比例增益
+param set-default MPC_XY_VEL_P_ACC 1.8
+#水平速度误差的积分增益
+param set-default MPC_XY_VEL_I_ACC 0.4
+#水平速度误差的微分增益
+param set-default MPC_XY_VEL_D_ACC 0.2
+
+####################### 位置控制限制参数 #######################
+
+#最大水平速度
+param set-default MPC_XY_VEL_MAX 2.0
+#最大垂直上升速度
+param set-default MPC_Z_VEL_MAX_UP 2.0
+#最大垂直下降速度
+param set-default MPC_Z_VEL_MAX_DN 1.0
+#轨迹发生器允许的最大水平误差
+param set-default MPC_XY_ERR_MAX 2.0
+#空中最大倾斜角
+param set-default MPC_TILTMAX_AIR 45
+#着陆时的最大倾斜角
+param set-default MPC_TILTMAX_LND 12
+#速度控制模式下的最大垂直上升加速度
+param set-default MPC_ACC_UP_MAX 4.0
+#速度控制模式下的最大垂直下降加速度
+param set-default MPC_ACC_DOWN_MAX 3.0
+#最大加加速度限制
+param set-default MPC_JERK_MAX 8.0
+#自主降落例行程序启用用户辅助下降速度
+param set-default MPC_LAND_RC_HELP 0
+
+####################### 角度控制参数 #######################
+
+#横滚角度控制的比例增益
 param set-default MC_ROLL_P 6.86
+#俯仰角度控制的比例增益
+param set-default MC_PITCH_P 6.5
+#偏航角度控制的比例增益
+param set-default MC_YAW_P 2.8
 
+####################### 角度控制限制参数 #######################
+
+#横滚最大角速度
+param set-default MC_ROLLRATE_MAX 220
+#俯仰最大角速度
+param set-default MC_PITCHRATE_MAX 220
+#偏航最大角速度
+param set-default MC_YAWRATE_MAX 200
+
+####################### 角速度控制参数 #######################
+
+### 横滚
+#横滚角速度的比例增益
+param set-default MC_ROLLRATE_P 0.076
+#横滚角速度的积分增益
+param set-default MC_ROLLRATE_I 0.187
+#横滚角速度的微分增益
+param set-default MC_ROLLRATE_D 0.0017
+#横滚加速度的前馈
+param set-default MC_ROLLRATE_FF 0.0
+#横滚角速度控制器增益，控制器的全局增益
+param set-default MC_ROLLRATE_K 1.0
+
+### 俯仰
+#俯仰角速度的比例增益
+param set-default MC_PITCHRATE_P 0.1
+#俯仰角速度的积分增益
+param set-default MC_PITCHRATE_I 0.2
+#俯仰角速度的微分增益
+param set-default MC_PITCHRATE_D 0.003
+#俯仰角速度前馈
+param set-default MC_PITCHRATE_FF 0.0
+#俯仰角速度控制器增益，控制器的全局增益
+param set-default MC_PITCHRATE_K 1.0
+
+### 偏航
+#偏航角速度的比例增益
+param set-default MC_YAWRATE_P 0.2
+#偏航角速度的积分增益
+param set-default MC_YAWRATE_I 0.1
+#偏航角速度的微分增益
+param set-default MC_YAWRATE_D 0.0
+#偏航角速度的前馈
+param set-default MC_YAWRATE_FF 0.0
+#俯仰角速度控制器增益，控制器的全局增益
+param set-default MC_YAWRATE_K 1.0
+
+####################### 角速度控制限制参数 #######################
+
+#横滚角速度积分限制
+param set-default MC_RR_INT_LIM 0.3
+#俯仰角速度积分限制
+param set-default MC_PR_INT_LIM 0.3
+#偏航角速度积分限制
+param set-default MC_YR_INT_LIM 0.3
+
+####################### EKF2相关参数 #######################
+
+#控制数据融合和辅助方法（定位数据来源）
+param set-default EKF2_AID_MASK 24
+#确认EKF使用的高度数据的主要来源
+param set-default EKF2_HGT_MODE 3
+#相对于IMU测量的视觉位置估计器延迟
+param set-default EKF2_EV_DELAY 175
+#使用GPS所需的最小卫星数量
+param set-default EKF2_REQ_NSATS 6
+#用于协方差预测的加速度计噪声
+param set-default EKF2_ACC_NOISE 0.35
+#用于协方差预测的陀螺仪噪声
+param set-default EKF2_GYR_NOISE 0.015
+#GPS水平速度的测量噪声
+param set-default EKF2_GPS_V_NOISE 0.3
+#GPS位置的测量噪声
+param set-default EKF2_GPS_P_NOISE 0.5
+
+####################### 地理围栏 #######################
+
+#无人机飞行范围的最大水平距离
+param set-default GF_MAX_HOR_DIST 100
+#无人机飞行范围的最大垂直距离
+param set-default GF_MAX_VER_DIST 100
+#地理围栏违规行为，当无人机飞行超过地理围栏后触发的模式
+param set-default GF_ACTION 3
+
+####################### 返航 #######################
+
+#返航模式飞行的高度
+param set-default RTL_RETURN_ALT 10
+
+####################### CBRK相关参数(开发者) #######################
+
+#电源检查使能
+#param set-default CBRK_SUPPLY_CHK 0
+#速率控制器输出使能
+param set-default CBRK_RATE_CTRL 0
+#IO安全使能
+param set-default CBRK_IO_SAFETY 22027
+#空速传感器使能
+param set-default CBRK_AIRSPD_CHK 0
+#飞行终止使能
+param set-default CBRK_FLIGHTTERM 121212
+#电机故障检测使能
+param set-default CBRK_ENGINEFAIL 284953
+#蜂鸣器使能
+param set-default CBRK_BUZZER 0
+#USB连接检查使能
+param set-default CBRK_USB_CHK 197848
+#位置检查使能
+param set-default CBRK_VELPOSERR 0
+#固定翼模式解锁使能
+param set-default CBRK_VTOLARMING 0
 
 set MIXER quad_x

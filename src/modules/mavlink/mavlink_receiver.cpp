@@ -948,8 +948,8 @@ MavlinkReceiver::handle_message_set_position_target_local_ned(mavlink_message_t 
 			setpoint.z = NAN;
 
 		} else {
-			mavlink_log_critical(&_mavlink_log_pub, "SET_POSITION_TARGET_LOCAL_NED coordinate frame %" PRIu8 " unsupported",
-					     target_local_ned.coordinate_frame);
+			// mavlink_log_critical(&_mavlink_log_pub, "SET_POSITION_TARGET_LOCAL_NED coordinate frame %" PRIu8 " unsupported",
+			// 		     target_local_ned.coordinate_frame);
 			return;
 		}
 

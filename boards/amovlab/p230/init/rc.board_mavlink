@@ -5,3 +5,5 @@
 
 # Start MAVLink on the USB port
 mavlink start -d /dev/ttyACM0
+
+mavlink stream -d /dev/ttyS1 -s DISTANCE_SENSOR -r 50
