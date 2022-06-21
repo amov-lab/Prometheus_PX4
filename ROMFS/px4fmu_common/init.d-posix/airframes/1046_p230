@@ -217,7 +217,7 @@ param set-default GF_MAX_HOR_DIST 100
 #无人机飞行范围的最大垂直距离
 param set-default GF_MAX_VER_DIST 100
 #地理围栏违规行为，当无人机飞行超过地理围栏后触发的模式
-param set-default GF_ACTION 3
+param set-default GF_ACTION 0
 
 ####################### 返航 #######################
 
