@@ -75,7 +75,7 @@ param set-default MPC_THR_MIN 0.12
 #自动推力控制中的最大推力
 param set-default MPC_THR_MAX 1.0
 #悬停推力
-param set-default MPC_THR_HOVER 0.5
+param set-default MPC_THR_HOVER 0.3
 #悬停推力源选择器
 param set-default MPC_USE_HTE 1
 # #手动位置控制子模式
